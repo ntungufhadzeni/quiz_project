@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+
+{% block content %} <br>
+<div class="card border-light">
+    <div class="card-header">
+            <h3>{% block title %}
+               Additional Questions
+                {% endblock %}</h3>
+    </div>
+    <div class="card-body">
+        <form method="post" class="form-check">
+            <br>
+            <h4>Have you previously diagnosed with a mental illness?</h4> <br>
+            <input type="radio" class="btn-check rounded-pill" id="Yes 0" name="answer 0" value="Yes" autocomplete="off">
+            <label class="btn btn-outline-success rounded-pill" for="Yes 0">Yes</label>
+            <input type="radio" class="btn-check rounded-pill" id="No 0" name="answer 0" value="No" autocomplete="off" checked>
+            <label class="btn btn-outline-success rounded-pill" for="No 0">No</label><br><br>
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-auto">
+                    <label class="col-form-label">If yes, specify</label><br>
+                    <select id="specify 0" name="specify 0" class="selectpicker" multiple data-live-search="true">
+                        <option value="Bipolar Disorder">Bipolar Disorder</option>
+                        <option value="Depression">Depression</option>
+                        <option value="Anxiety">Anxiety</option>
+                        <option value="Psychotic">Psychotic</option>
+                    </select>
+                </div>
+            </div>
+            <hr/><br>
+            <h4>Anyone diagnosed with mental illness in your family?</h4> <br>
+            <input type="radio" class="btn-check rounded-pill" id="Yes 1" name="answer 1" value="Yes" autocomplete="off">
+            <label class="btn btn-outline-success rounded-pill" for="Yes 1">Yes</label>
+            <input type="radio" class="btn-check rounded-pill" id="No 1" name="answer 1" value="No" autocomplete="off" checked>
+            <label class="btn btn-outline-success rounded-pill" for="No 1">No</label><br><br>
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-auto">
+                    <label class="col-form-label">If yes, specify</label><br>
+                    <select id="specify 1" name="specify 1" placeholder="If yes, specify" class="selectpicker" multiple data-live-search="true">
+                        <option value="Both parents">Both parents</option>
+                        <option value="Single Parent">Single Parent</option>
+                        <option value="Sibling">Sibling</option>
+                        <option value="Relative">Relative</option>
+                        <option value="Grandparents">Grandparents</option>
+                    </select>
+                </div>
+            </div>
+            <hr/><br>
+            <h4>Are you currently using any substances/drugs?</h4> <br>
+            <input type="radio" class="btn-check rounded-pill" id="Yes 2" name="answer 2" value="Yes" autocomplete="off">
+            <label class="btn btn-outline-success rounded-pill" for="Yes 2">Yes</label>
+            <input type="radio" class="btn-check rounded-pill" id="No 2" name="answer 2" value="No" autocomplete="off" checked>
+            <label class="btn btn-outline-success rounded-pill" for="No 2">No</label><br><br>
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-auto">
+                    <label class="col-form-label">If yes, specify</label><br>
+                    <select id="specify 2" name="specify 2" placeholder="If yes, specify" class="selectpicker" multiple data-live-search="true">
+                        <option value="Nicotine/Cigarette">Nicotine/Cigarette</option>
+                        <option value="Alcohol">Alcohol</option>
+                        <option value="Cannabis/dagga">Cannabis/dagga</option>
+                        <option value="Cocaine">Cocaine</option>
+                        <option value="Heroine/Nyaope">Heroine/Nyaope</option>
+                        <option value="Methamphetamine">Methamphetamine</option>
+                        <option value="Stimulants">Stimulants</option>
+                        <option value="Over the counter">Over the counter</option>
+                        <option value="Pain medication/Codeine">Pain medication/Codeine</option>
+                    </select>
+                </div>
+            </div>
+            <hr/><br>
+            <h4>Previous substance use?</h4> <br>
+            <input type="radio" class="btn-check rounded-pill" id="Yes 3" name="answer 3" value="Yes" autocomplete="off">
+            <label class="btn btn-outline-success rounded-pill" for="Yes 3">Yes</label>
+            <input type="radio" class="btn-check rounded-pill" id="No 3" name="answer 3" value="No" autocomplete="off" checked>
+            <label class="btn btn-outline-success rounded-pill" for="No 3">No</label><br><br>
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-auto">
+                    <label class="col-form-label">If yes, specify</label><br>
+                    <select id="specify 3" name="specify 3" placeholder="If yes, specify" class="selectpicker" multiple data-live-search="true">
+                        <option value="Nicotine/Cigarette">Nicotine/Cigarette</option>
+                        <option value="Alcohol">Alcohol</option>
+                        <option value="Cannabis/dagga">Cannabis/dagga</option>
+                        <option value="Cocaine">Cocaine</option>
+                        <option value="Heroine/Nyaope">Heroine/Nyaope</option>
+                        <option value="Methamphetamine">Methamphetamine</option>
+                        <option value="Stimulants">Stimulants</option>
+                        <option value="Over the counter">Over the counter</option>
+                        <option value="Pain medication/Codeine">Pain medication/Codeine</option>
+                    </select>
+                </div>
+            </div>
+            <hr/><br>
+            <h4>Have you been diagnosed with a medical problem?</h4> <br>
+            <input type="radio" class="btn-check rounded-pill" id="Yes 4" name="answer 4" value="Yes" autocomplete="off">
+            <label class="btn btn-outline-success rounded-pill" for="Yes 4">Yes</label>
+            <input type="radio" class="btn-check rounded-pill" id="No 4" name="answer 4" value="No" autocomplete="off" checked>
+            <label class="btn btn-outline-success rounded-pill" for="No 4">No</label><br><br>
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-auto">
+                    <label class="col-form-label">If yes, specify</label><br>
+                    <select id="specify 4" name="specify 4" placeholder="If yes, specify" class="selectpicker" multiple data-live-search="true">
+                        <option value="Diabetes">Diabetes</option>
+                        <option value="Asthma">Asthma</option>
+                        <option value="Hypertension">Hypertension</option>
+                        <option value="HIV">HIV</option>
+                        <option value="Stroke">Stroke</option>
+                        <option value="Thyroid disease">Thyroid disease</option>
+                        <option value="Epilepsy">Epilepsy</option>
+                        <option value="Head Injury">Head Injury</option>
+                        <option value="COVID-19">COVID-19</option>
+                        <option value="Meningitis">Meningitis</option>
+                    </select>
+                </div>
+            </div>
+            <hr/><br>
+            <h4>Did you experience any traumatic events as a child?</h4> <br>
+            <input type="radio" class="btn-check rounded-pill" id="Yes 5" name="answer 5" value="Yes" autocomplete="off">
+            <label class="btn btn-outline-success rounded-pill" for="Yes 5">Yes</label>
+            <input type="radio" class="btn-check rounded-pill" id="No 5" name="answer 5" value="No" autocomplete="off" checked>
+            <label class="btn btn-outline-success rounded-pill" for="No 5">No</label><br><br>
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-auto">
+                    <label class="col-form-label">If yes, specify</label><br>
+                    <select id="specify 5" name="specify 5" placeholder="If yes, specify" class="selectpicker" multiple data-live-search="true">
+                        <option value="Physical">Physical</option>
+                        <option value="Sexual">Sexual</option>
+                        <option value="Emotional">Emotional</option>
+                        <option value="Neglect">Neglect</option>
+                        <option value="Death of parents/caregiver">Death of parents/caregiver</option>
+                        <option value="Natural disaster">Natural disaster</option>
+                    </select>
+                </div>
+            </div>
+            <hr/><br>
+            <h4>Have you experienced any traumatic events as an adult?</h4> <br>
+            <input type="radio" class="btn-check rounded-pill" id="Yes 6" name="answer 6" value="Yes" autocomplete="off">
+            <label class="btn btn-outline-success rounded-pill" for="Yes 6">Yes</label>
+            <input type="radio" class="btn-check rounded-pill" id="No 6" name="answer 6" value="No" autocomplete="off" checked>
+            <label class="btn btn-outline-success rounded-pill" for="No 6">No</label><br><br>
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-auto">
+                    <label class="col-form-label">If yes, specify</label><br>
+                    <select id="specify 6" name="specify 6" placeholder="If yes, specify" class="selectpicker" multiple data-live-search="true">
+                        <option value="Physical">Physical</option>
+                        <option value="Sexual">Sexual</option>
+                        <option value="Emotional">Emotional</option>
+                        <option value="Neglect">Neglect</option>
+                        <option value="Death of parents/caregiver">Death of parents/caregiver</option>
+                        <option value="Natural disaster">Natural disaster</option>
+                    </select>
+                </div>
+            </div>
+            <hr/><br>
+            <br>
+            <button type="submit" class="btn rounded-pill" style="background-color: #32BF84;">Next</button>
+        </form>
+    </div>
+</div> <br> <br>
+{% endblock %}

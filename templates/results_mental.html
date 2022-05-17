@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %} <br>
+<div class="card border-light">
+    <div class="card-header">
+        <h3>{% block title %} Results {% endblock %}</h3>
+    </div>
+    <div class="card-body">
+        <h4>{{ diagnosis }}</h4> <br>
+        <a href="{{ url_for('home') }}" class="btn rounded-pill" style="background-color: #32BF84;">Home</a>
+    </div>
+</div>
+{% endblock %}
