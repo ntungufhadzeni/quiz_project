@@ -112,7 +112,7 @@ def book():
     return render_template('book_appointment.html')
 
 
-@app.route('/additional-info_1', methods=('GET', 'POST'))
+@app.route('/additional-info', methods=('GET', 'POST'))
 def additional():
     if request.method == 'POST':
         answer1 = request.form['answer 0']
@@ -126,7 +126,7 @@ def additional():
             return redirect(url_for('mental'))
         else:
             return redirect(url_for('home'))
-    return render_template('additional_mental_illness.html')
+    return render_template('question.html')
 
 
 @app.route('/mental-quiz', methods=('GET', 'POST'))
@@ -145,3 +145,11 @@ def mental():
 def mental_result():
     diagnosis = session['mental_diagnosis']
     return render_template('results_mental.html', diagnosis=diagnosis)
+
+
+@app.route('/contact-us', methods=('GET', 'POST'))
+def contact():
+    if request.method == 'POST':
+        subject = request.form['subject']
+        return redirect(url_for('home'))
+    return render_template('contact.html')

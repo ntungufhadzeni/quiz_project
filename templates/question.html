@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %} <br>
-<div class="card border-light">
-    <div class="card-header">
-            <h3>{% block title %}
-               Additional Questions
-                {% endblock %}</h3>
-    </div>
-    <div class="card-body">
-        <form method="post" class="form-check">
+<section>
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">{% block title %} Additional Questions {% endblock %}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<section>
+    <div class="lightBg">
+        <div class="container"> <br>
+        <form method="post">
             <br>
             <h4>Have you previously diagnosed with a mental illness?</h4> <br>
             <input type="radio" class="btn-check rounded-pill" id="Yes 0" name="answer 0" value="Yes" autocomplete="off">
@@ -17,8 +26,8 @@
             <label class="btn btn-outline-success rounded-pill" for="No 0">No</label><br><br>
             <div class="row g-2 align-items-center mb-3">
                 <div class="col-auto">
-                    <label class="col-form-label">If yes, specify</label><br>
-                    <select id="specify 0" name="specify 0" class="selectpicker" multiple data-live-search="true">
+                    <select name="specify 0">
+                        <option selected>If yes, specify...</option>
                         <option value="Bipolar Disorder">Bipolar Disorder</option>
                         <option value="Depression">Depression</option>
                         <option value="Anxiety">Anxiety</option>
@@ -34,11 +43,11 @@
             <label class="btn btn-outline-success rounded-pill" for="No 1">No</label><br><br>
             <div class="row g-2 align-items-center mb-3">
                 <div class="col-auto">
-                    <label class="col-form-label">If yes, specify</label><br>
-                    <select id="specify 1" name="specify 1" placeholder="If yes, specify" class="selectpicker" multiple data-live-search="true">
+                    <select name="specify 1">
+                        <option selected>If yes, specify...</option>
                         <option value="Both parents">Both parents</option>
                         <option value="Single Parent">Single Parent</option>
-                        <option value="Sibling">Sibling</option>
+                        <option value="Sibling">Sibling</option>additional_mental_illness
                         <option value="Relative">Relative</option>
                         <option value="Grandparents">Grandparents</option>
                     </select>
@@ -52,8 +61,8 @@
             <label class="btn btn-outline-success rounded-pill" for="No 2">No</label><br><br>
             <div class="row g-2 align-items-center mb-3">
                 <div class="col-auto">
-                    <label class="col-form-label">If yes, specify</label><br>
-                    <select id="specify 2" name="specify 2" placeholder="If yes, specify" class="selectpicker" multiple data-live-search="true">
+                    <select name="specify 2">
+                        <option selected>If yes, specify...</option>
                         <option value="Nicotine/Cigarette">Nicotine/Cigarette</option>
                         <option value="Alcohol">Alcohol</option>
                         <option value="Cannabis/dagga">Cannabis/dagga</option>
@@ -74,8 +83,8 @@
             <label class="btn btn-outline-success rounded-pill" for="No 3">No</label><br><br>
             <div class="row g-2 align-items-center mb-3">
                 <div class="col-auto">
-                    <label class="col-form-label">If yes, specify</label><br>
-                    <select id="specify 3" name="specify 3" placeholder="If yes, specify" class="selectpicker" multiple data-live-search="true">
+                    <select name="specify 3" placeholder="If yes, specify">
+                        <option selected>If yes, specify...</option>
                         <option value="Nicotine/Cigarette">Nicotine/Cigarette</option>
                         <option value="Alcohol">Alcohol</option>
                         <option value="Cannabis/dagga">Cannabis/dagga</option>
@@ -96,8 +105,8 @@
             <label class="btn btn-outline-success rounded-pill" for="No 4">No</label><br><br>
             <div class="row g-2 align-items-center mb-3">
                 <div class="col-auto">
-                    <label class="col-form-label">If yes, specify</label><br>
-                    <select id="specify 4" name="specify 4" placeholder="If yes, specify" class="selectpicker" multiple data-live-search="true">
+                    <select name="specify 4">
+                        <option selected>If yes, specify...</option>
                         <option value="Diabetes">Diabetes</option>
                         <option value="Asthma">Asthma</option>
                         <option value="Hypertension">Hypertension</option>
@@ -119,8 +128,8 @@
             <label class="btn btn-outline-success rounded-pill" for="No 5">No</label><br><br>
             <div class="row g-2 align-items-center mb-3">
                 <div class="col-auto">
-                    <label class="col-form-label">If yes, specify</label><br>
-                    <select id="specify 5" name="specify 5" placeholder="If yes, specify" class="selectpicker" multiple data-live-search="true">
+                    <select name="specify 5">
+                        <option selected>If yes, specify...</option>
                         <option value="Physical">Physical</option>
                         <option value="Sexual">Sexual</option>
                         <option value="Emotional">Emotional</option>
@@ -138,8 +147,8 @@
             <label class="btn btn-outline-success rounded-pill" for="No 6">No</label><br><br>
             <div class="row g-2 align-items-center mb-3">
                 <div class="col-auto">
-                    <label class="col-form-label">If yes, specify</label><br>
-                    <select id="specify 6" name="specify 6" placeholder="If yes, specify" class="selectpicker" multiple data-live-search="true">
+                    <select name="specify 6">
+                        <option selected>If yes, specify...</option>
                         <option value="Physical">Physical</option>
                         <option value="Sexual">Sexual</option>
                         <option value="Emotional">Emotional</option>
@@ -151,8 +160,9 @@
             </div>
             <hr/><br>
             <br>
-            <button type="submit" class="btn rounded-pill" style="background-color: #32BF84;">Next</button>
+            <button type="submit" class="btn rounded-pill" style="background-color: #32BF84;">Next</button><br> <br>
         </form>
     </div>
-</div> <br> <br>
+</div>
+</section>
 {% endblock %}

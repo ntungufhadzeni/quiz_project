@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %} <br>
-<div class="card border-light">
-    <div class="card-header">
-            <h3>{% block title %}
-                Patient Depression Questionnaire
-                {% endblock %}</h3>
-    </div>
-    <div class="card-body">
+<section>
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">{% block title %} Patient Depression Questionnaire {% endblock %}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<section>
+    <div class="lightBg">
+        <div class="container"> <br>
         <form method="post" class="form-check">
             {% for i in range(0, len) %}
             <h4>{{questions[i].ques_body}}</h4> <br>
@@ -20,8 +29,9 @@
             <input type="radio" class="btn-check rounded-pill" id="D {{i}}" name="answer {{i}}" value="D" autocomplete="off">
             <label class="btn btn-outline-success rounded-pill" for="D {{i}}"> {{questions[i].D}}</label><hr/><br>
             {% endfor %} <br> <br>
-            <button type="submit" class="btn rounded-pill" style="background-color: #32BF84;">Done</button>
+            <button type="submit" class="btn rounded-pill" style="background-color: #32BF84;">Done</button> <br><br>
         </form>
     </div>
-</div> <br>
+</div>
+</section>
 {% endblock %}

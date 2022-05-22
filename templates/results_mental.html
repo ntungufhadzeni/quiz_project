@@ -1,13 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %} <br>
-<div class="card border-light">
-    <div class="card-header">
-        <h3>{% block title %} Results {% endblock %}</h3>
+<section>
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">{% block title %} Patient Depression Questionnaire {% endblock %}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<section>
+    <div class="lightBg">
+        <div class="container">
+            <h4>{{ diagnosis }}</h4> <br>
+            <a href="{{ url_for('home') }}" class="btn rounded-pill" style="background-color: #32BF84;">Home</a>
+        </div>
     </div>
-    <div class="card-body">
-        <h4>{{ diagnosis }}</h4> <br>
-        <a href="{{ url_for('home') }}" class="btn rounded-pill" style="background-color: #32BF84;">Home</a>
-    </div>
-</div>
+</section>
 {% endblock %}
