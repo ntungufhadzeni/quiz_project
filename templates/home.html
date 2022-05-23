@@ -7,13 +7,12 @@
           <div class="row g-4 g-md-3  align-items-center">
             <div class="col-md-auto order-md-last">
               <div class="bannerUserImg">
-                <img src="{{ url_for('static',filename='images/user-img.jpeg') }}" alt="...">
+                <img src="{{ url_for('static',filename='images/user-img.jpg') }}" alt="...">
               </div>
             </div>
             <div class="col-md">
               <div class="bannerContent">
-                <h1>{% block title %} Welcome to Mental Health Check {% endblock %}</h1> <br>
-                <h3 class="xlTitle pb-3">Hi, I’m Doctor Nokuthula Mdaka, <br> a clinical Psychologist</h3>
+                <h1 class="xlTitle pb-3">{% block title %} Welcome to Mental Health Check {% endblock %}</h1> <br>
                 <p>Mental Health Check uses online screening to determine whether you are experiencing symptoms of a mental health conditions.<br>
                 Mental health conditions, such as depression or anxiety, are real, common and treatable. And recovery is possible. So take the first steps to mental health by taking one of our 3 minutes screening tests.</p>
                 <div class="bannerBtnCol">
