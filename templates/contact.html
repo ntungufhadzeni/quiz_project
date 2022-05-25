@@ -8,6 +8,8 @@
             <div class="col-md-6">
               <div class="bannerContent">
                 <h1 class="xlTitle pb-md-3">Contact us below</h1>
+                  <p>Thank you for reaching out to Mental Health Check. If you are booking for appointment,
+                  please provide best time when you will be available to receive a call.</p>
               </div>
             </div>
           </div>
@@ -18,15 +20,16 @@
     <section>
       <div class="lightBg">
         <div class="container">
-            <form id="contactForm">
+            <form method="post">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your name..">
 
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Your email..">
-
-                <label for="subject">Message</label>
-                <input type="text" id="subject" name="subject" placeholder="Subject..">
+                <div class="mb-3">
+                <label class="col-form-label" for="phone">Mobile</label><br>
+                <input type="tel" id="phone" name="phone" placeholder="Your mobile number..">
+                </div>
 
                 <textarea id="message" name="message" placeholder="Write something.." rows="6"></textarea>
 

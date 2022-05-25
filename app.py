@@ -5,6 +5,10 @@ from flask import Flask, render_template, request, url_for, session, flash
 from werkzeug.utils import redirect
 from flask_session import Session
 
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"FFF4Q8z\n\xec]/'
 app.config["SESSION_PERMANENT"] = False
@@ -13,7 +17,29 @@ Session(app)
 
 with open("depression.json", "r") as read_file:
     questions = json.load(read_file)
+
+with open("add_data_file.json", "r") as read_file:
+    add_questions = json.load(read_file)
+
 ans_depression = []
+
+
+def send_email(subject, message_text):
+    sender_email = "ntungufhadzenimbudzeni@gmail.com"
+    password = "thiVhafuni8"
+    receiver_email = "mbudzenin@yahoo.com"
+    message = MIMEMultipart()
+    message['From'] = sender_email
+    message['To'] = receiver_email
+    message['Subject'] = subject
+    message.attach(MIMEText(message_text, 'plain'))
+    e_session = smtplib.SMTP('smtp.gmail.com', 587)
+    e_session.starttls()
+    e_session.login(sender_email, password)
+    text = message.as_string()
+    e_session.sendmail(sender_email, receiver_email, text)
+    e_session.quit()
+    print('Email Sent')
 
 
 def save_to_db():
@@ -43,25 +69,25 @@ def depression_calc(lst):
         elif c == 'D':
             m += 3
     if 0 <= m <= 4:
-        msg = 'Diagnosis: Minimal depression'
+        msg = 'Minimal depression'
     elif 5 <= m <= 9:
-        msg = 'Diagnosis: Mild depression'
+        msg = 'Mild depression'
     elif 10 <= m <= 14:
-        msg = 'Diagnosis: Moderate depression'
+        msg = 'Moderate depression'
     elif 15 <= m <= 19:
-        msg = 'Diagnosis: Moderately severe depression'
+        msg = 'Moderately severe depression'
     elif 20 <= m <= 27:
-        msg = 'Diagnosis: Severe depression'
+        msg = 'Severe depression'
 
     return msg
 
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 
-@app.route('/client', methods=['GET', 'POST'])
+@app.route('/about-you', methods=['GET', 'POST'])
 def client():
     if request.method == 'POST':
         session['name'] = request.form['firstname']
@@ -87,33 +113,9 @@ def client():
     return render_template('client_details.html')
 
 
-@app.route('/book-appointment', methods=('GET', 'POST'))
-def book():
-    if request.method == 'POST':
-        session['name'] = request.form['firstname']
-        session['lastname'] = request.form['lastname']
-        session['cell'] = request.form['cell']
-        session['email'] = request.form['email']
-        session['age'] = request.form['age']
-        session['gender'] = request.form['gender']
-        session['rank'] = request.form['rank']
-        session['race'] = request.form['race']
-        session['province'] = request.form['province']
-        session['postal'] = request.form['postal']
-        session['marital'] = request.form['marital']
-        session['address'] = request.form['addr1'] + ', ' + request.form['addr2'] + ', ' + request.form['city']
-        session['education'] = request.form['education']
-        session['years employed'] = request.form['years employed']
-        session['training'] = request.form['training']
-        session['religion'] = request.form['religion']
-
-        save_to_db()
-        return redirect(url_for('home'))
-    return render_template('book_appointment.html')
-
-
 @app.route('/additional-info', methods=('GET', 'POST'))
 def additional():
+    length = len(add_questions)
     if request.method == 'POST':
         answer1 = request.form['answer 0']
         answer2 = request.form['answer 1']
@@ -126,7 +128,7 @@ def additional():
             return redirect(url_for('mental'))
         else:
             return redirect(url_for('home'))
-    return render_template('question.html')
+    return render_template('additional_question.html', q=add_questions, len=length)
 
 
 @app.route('/mental-quiz', methods=('GET', 'POST'))
@@ -150,6 +152,12 @@ def mental_result():
 @app.route('/contact-us', methods=('GET', 'POST'))
 def contact():
     if request.method == 'POST':
-        subject = request.form['subject']
+        subject = 'Mental Health Check'
+        name = request.form['name']
+        phone = request.form['phone']
+        _email = request.form['email']
+        text = request.form['message']
+        message = 'Name: ' + name + '\n' + 'Email: ' + _email + '\n' + 'Phone: ' + phone + '\n' + text
+        send_email(subject, message)
         return redirect(url_for('home'))
     return render_template('contact.html')

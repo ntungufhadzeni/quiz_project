@@ -7,7 +7,12 @@
           <div class="row g-4 g-md-3  align-items-center">
             <div class="col-md-6">
               <div class="bannerContent">
-                <h1 class="xlTitle pb-md-3">{% block title %} About You {% endblock %}</h1>
+                  <h1 class="xlTitle pb-md-3">{% block title %} About You {% endblock %}</h1><br>
+                  <p>Please take a moment to answer the following optional questions.
+                      Your information will be kept confidential. We won't share this information with anyone.
+                      Your answers help us make a better diagnosis about your mental health condition.
+                      You can answer as many or as few questions as you would like. When you are done,
+                      scroll to the bottom of the survey and click "Next" to start your quiz.</p>
               </div>
             </div>
           </div>
@@ -18,7 +23,7 @@
     <div class="lightBg">
         <div class="container"> <br>
             <form method="post">
-            <div class="row g-2 mb-3">
+            <div class="row g-2 align-items-center mb-3">
                 <div class="col-auto">
                     <div>
                         <label for="firstname">First name</label>
@@ -32,13 +37,13 @@
                     </div>
                 </div>
             </div>
-            <div class="row g-2 mb-3">
+            <div class="row g-2 align-items-center mb-3">
                 <div class="col-auto">
-                    <label for="cell">Cell</label>
-                    <input type="text" id="cell" name="cell" placeholder="Your cell number..">
+                    <label class="col-form-label" for="cell">Mobile</label>
+                    <input type="tel" class="form-control" id="cell" name="cell" placeholder="Your cell number..">
                 </div>
             </div>
-            <div class="row g-2 mb-3">
+            <div class="row g-2 align-items-center mb-3">
                 <div class="col-auto">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Your email address">
@@ -93,7 +98,7 @@
         <div class="row g-2 align-items-center mb-3">
             <div class="col-auto">
                 <label class="col-form-label" for="children">Number Of Children</label>
-                <input type="text" class="form-control" id="children" name="children" placeholder="Number Of Children">
+                <input type="number" class="form-control" id="children" name="children" placeholder="Number Of Children">
             </div>
         </div>
         <div class="row g-2 align-items-center mb-3">
@@ -134,7 +139,7 @@
         <div class="row g-2 align-items-center mb-3">
             <div class="col-auto">
                 <label class="col-form-label" for="postal">Postal Code</label>
-                <input type="text" class="form-control" id="postal" name="postal" placeholder="0001">
+                <input type="number" class="form-control" id="postal" name="postal" placeholder="Your postal code">
             </div>
         </div>
         <div class="row g-2 align-items-center mb-3">
@@ -160,7 +165,7 @@
         <div class="row g-2 mb-3">
             <div class="col-auto">
                 <label class="col-form-label" for="years">Number Of Years Employed</label>
-                <input type="text" class="form-control" id="years" name="years employed" placeholder="Number Of Years Employed">
+                <input type="number" class="form-control" id="years" name="years employed" placeholder="Number Of Years Employed">
             </div>
         </div>
         <div class="row g-2 align-items-center mb-3">

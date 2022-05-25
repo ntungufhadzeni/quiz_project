@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %} <br>
+<section>
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">{% block title %} Additional Questions {% endblock %}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<section>
+    <div class="lightBg">
+        <div class="container"> <br>
+        <form method="post">
+            {% for i in range(0, len) %}
+            <br>
+            <h4>{{ q[i]['q'] }}</h4> <br>
+            <input type="radio" class="btn-check rounded-pill" id="Yes {{i}}" name="answer {{i}}" value="Yes" autocomplete="off">
+            <label class="btn btn-outline-success rounded-pill" for="Yes {{i}}">Yes</label>
+            <input type="radio" class="btn-check rounded-pill" id="No {{i}}" name="answer {{i}}" value="No" autocomplete="off" checked>
+            <label class="btn btn-outline-success rounded-pill" for="No {{i}}">No</label><br><br>
+            <div class="mb-3">
+                <div class="col-auto">
+                    <label>If yes, specify...</label>
+                    <select class="selectpicker" multiple data-live-search="true" name="specify {{i}}">
+                        {% for item in q[i]['add'] %}
+                        <option value="{{item}}">{{item}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <hr/><br>
+            {% endfor %}
+            <br>
+            <button type="submit" class="btn rounded-pill" style="background-color: #32BF84;">Next</button><br> <br>
+        </form>
+    </div>
+</div>
+</section>
+{% endblock %}
