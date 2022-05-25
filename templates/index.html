@@ -12,6 +12,18 @@
             </div>
             <div class="col-md">
               <div class="bannerContent">
+                  {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endif %}
+                  {% endwith %} <br>
                 <h1 class="xlTitle pb-3">{% block title %} Welcome to Mental Health Check {% endblock %}</h1> <br>
                 <p>Mental Health Check uses online screening to determine whether you are experiencing symptoms of a mental health conditions.<br>
                 Mental health conditions, such as depression or anxiety, are real, common and treatable. And recovery is possible. So take the first steps to mental health by taking one of our 3 minutes screening tests.</p>

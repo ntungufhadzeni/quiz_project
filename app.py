@@ -1,5 +1,6 @@
 import json
 import sqlite3 as sql
+from time import sleep
 
 from flask import Flask, render_template, request, url_for, session, flash
 from werkzeug.utils import redirect
@@ -159,5 +160,7 @@ def contact():
         text = request.form['message']
         message = 'Name: ' + name + '\n' + 'Email: ' + _email + '\n' + 'Phone: ' + phone + '\n' + text
         send_email(subject, message)
+        message = 'Message received, we will get back to you soon'
+        flash(message)
         return redirect(url_for('home'))
     return render_template('contact.html')
