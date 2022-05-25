@@ -28,7 +28,7 @@
             <div class="mb-3">
                 <div class="col-auto">
                     <label>If yes, specify...</label>
-                    <select class="selectpicker" multiple data-live-search="true" name="specify {{i}}">
+                    <select multiple name="specify {{i}}">
                         {% for item in q[i]['add'] %}
                         <option value="{{item}}">{{item}}</option>
                         {% endfor %}
