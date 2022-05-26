@@ -3,7 +3,6 @@ $('.navToggle').on('click', function (e) {
   $('body').toggleClass('navToggleActive');
 });
 
-
 $(window).scroll(function(){
   if ($(this).scrollTop() > 10) {
     $('body').addClass('fixedHeader');
