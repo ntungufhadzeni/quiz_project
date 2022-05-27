@@ -26,9 +26,9 @@ ans_depression = []
 
 
 def send_email(subject, message_text):
-    sender_email = "ntungufhadzenimbudzeni@gmail.com"
-    password = "thiVhafuni8"
-    receiver_email = "mbudzenin@yahoo.com"
+    sender_email = ""
+    password = ""
+    receiver_email = ""
     message = MIMEMultipart()
     message['From'] = sender_email
     message['To'] = receiver_email
