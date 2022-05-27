@@ -40,7 +40,6 @@ def send_email(subject, message_text):
     text = message.as_string()
     e_session.sendmail(sender_email, receiver_email, text)
     e_session.quit()
-    print('Email Sent')
 
 
 def save_to_db():
@@ -159,7 +158,7 @@ def contact():
         _email = request.form['email']
         text = request.form['message']
         message = 'Name: ' + name + '\n' + 'Email: ' + _email + '\n' + 'Phone: ' + phone + '\n' + text
-        send_email(subject, message)
+        # send_email(subject, message)
         message = 'Message received, we will get back to you soon'
         flash(message)
         return redirect(url_for('home'))
