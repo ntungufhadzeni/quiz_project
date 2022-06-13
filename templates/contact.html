@@ -20,18 +20,27 @@
     <section>
       <div class="lightBg">
         <div class="container">
-            <form method="post">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name..">
-
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Your email..">
-                <div class="mb-3">
-                <label class="col-form-label" for="phone">Mobile</label><br>
-                <input type="tel" id="phone" name="phone" placeholder="Your mobile number..">
+            <form method="post"> <br> <br>
+                <div class="row">
+                    <div class="col-md-8">
+                        <input type="text" name="name" placeholder="Your name">
+                    </div>
                 </div>
-
-                <textarea id="message" name="message" placeholder="Write something.." rows="6"></textarea>
+                <div class="row">
+                    <div class="col-md-8">
+                        <input type="email" name="email" placeholder="Your email address">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <input type="tel" name="mobile" placeholder="Your mobile number">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <textarea name="message" placeholder="Write something" rows="6"></textarea>
+                    </div>
+                </div>
 
                 <input class='btn btnPrimary' type="submit" value="Submit"> <br><br>
             </form>

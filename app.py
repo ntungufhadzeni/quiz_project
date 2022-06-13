@@ -1,6 +1,5 @@
 import json
 import sqlite3 as sql
-from time import sleep
 
 from flask import Flask, render_template, request, url_for, session, flash
 from werkzeug.utils import redirect
@@ -16,13 +15,14 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-with open("depression.json", "r") as read_file:
+with open("questions.json", "r") as read_file:
     questions = json.load(read_file)
 
 with open("add_data_file.json", "r") as read_file:
     add_questions = json.load(read_file)
 
 ans_depression = []
+ans_anxiety = []
 
 
 def send_email(subject, message_text):
@@ -82,6 +82,29 @@ def depression_calc(lst):
     return msg
 
 
+def anxiety_calc(lst):
+    m = 0
+    for c in lst:
+        if c == 'A':
+            m += 0
+        elif c == 'B':
+            m += 1
+        elif c == 'C':
+            m += 2
+        elif c == 'D':
+            m += 3
+    if 0 <= m <= 4:
+        msg = 'Minimal anxiety'
+    elif 5 <= m <= 9:
+        msg = 'Mild anxiety'
+    elif 10 <= m <= 14:
+        msg = 'Moderate anxiety'
+    elif 15 <= m <= 21:
+        msg = 'Severe anxiety'
+
+    return msg
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -119,6 +142,8 @@ def additional():
     if request.method == 'POST':
         answer1 = request.form['answer 0']
         answer2 = request.form['answer 1']
+        answer3 = request.form['answer 2']
+        answer4 = request.form['answer 3']
         if answer1 == 'Yes' or answer2 == 'Yes':
             try:
                 select_mental_1 = request.form.getlist('specify 0')
@@ -126,6 +151,13 @@ def additional():
             except ValueError:
                 return redirect(url_for('mental'))
             return redirect(url_for('mental'))
+        elif answer3 == 'Yes' or answer4 == 'Yes':
+            try:
+                select_mental_3 = request.form.getlist('specify 2')
+                select_mental_4 = request.form.getlist('specify 3')
+            except ValueError:
+                return redirect(url_for('anxiety'))
+            return redirect(url_for('anxiety'))
         else:
             return redirect(url_for('home'))
     return render_template('additional_question.html', q=add_questions, len=length)
@@ -133,20 +165,38 @@ def additional():
 
 @app.route('/mental-quiz', methods=('GET', 'POST'))
 def mental():
-    lens = len(questions)
+    lens = len(questions[0])
     if request.method == 'POST':
         for i in range(lens):
             ans_depression.append(request.form[f'answer {i}'])
         diagnosis = depression_calc(ans_depression)
         session['mental_diagnosis'] = diagnosis
         return redirect(url_for('mental_result'))
-    return render_template('quiz_depression.html', questions=questions, len=lens)
+    return render_template('quiz_1.html', questions=questions[0], len=lens)
+
+
+@app.route('/anxiety-quiz', methods=('GET', 'POST'))
+def anxiety():
+    lens = len(questions[1])
+    if request.method == 'POST':
+        for i in range(lens):
+            ans_anxiety.append(request.form[f'answer {i}'])
+        diagnosis = anxiety_calc(ans_anxiety)
+        session['anxiety_diagnosis'] = diagnosis
+        return redirect(url_for('anxiety_result'))
+    return render_template('quiz_1.html', questions=questions[1], len=lens)
 
 
 @app.route('/mental-results', methods=('GET', 'POST'))
 def mental_result():
     diagnosis = session['mental_diagnosis']
     return render_template('results_mental.html', diagnosis=diagnosis)
+
+
+@app.route('/anxiety-results', methods=('GET', 'POST'))
+def anxiety_result():
+    diagnosis = session['anxiety_diagnosis']
+    return render_template('results_anxiety.html', diagnosis=diagnosis)
 
 
 @app.route('/contact-us', methods=('GET', 'POST'))

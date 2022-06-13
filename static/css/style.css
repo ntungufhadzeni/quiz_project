@@ -279,7 +279,6 @@ a, .btn {
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
-  border-radius: 50%;
   position: relative;
 }
 .bannerUserImg::before {
@@ -290,7 +289,6 @@ a, .btn {
   width: 100%;
   height: 100%;
   background-color: #EDF7FA;
-  border-radius: 50%;
 }
 .bannerBtnCol {
 	padding-top: 15px;
@@ -769,7 +767,7 @@ body.navToggleActive {
   }
 }
 
-input[type=text], input[type=email], select, textarea {
+input[type=text], input[type=email], input[type=tel], select, textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -793,7 +791,7 @@ hr {
 }
 
 form {
-  width: 300px;
+  width: 800px;
 }
 
 .intl-tel-input {

@@ -47,4 +47,5 @@ var swiper = new Swiper(".certificatesSlider", {
   },
 });
 
-$(".alert").alert();
+$('.alert').alert('close');
+

@@ -17,25 +17,33 @@
                         {% for message in messages %}
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ message }}
-                            <a href="{{ url_for('home') }}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                         {% endfor %}
                     {% endif %}
                   {% endwith %} <br>
                 <h1 class="xlTitle pb-3">{% block title %} Welcome to Mental Health Check {% endblock %}</h1> <br>
-                <p>Mental Health Check uses online screening to determine whether you are experiencing symptoms of a mental health conditions.<br>
-                Mental health conditions, such as depression or anxiety, are real, common and treatable. And recovery is possible. So take the first steps to mental health by taking one of our 3 minutes screening tests.</p>
-                <div class="bannerBtnCol">
-                  <div class="row">
-                    <div class="col-auto">
-                      <a href="{{ url_for('client') }}" class="btn btnPrimary">Take A Self-Assessment</a>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+</section>
+<section>
+    <div class="lightBg">
+        <div class="container"><br>
+            <div class="bannerBtnCol">
+                <div class="row">
+                    <div class="col-auto">
+                        <p>Mental Health Check uses online screening to determine whether you are experiencing symptoms of a mental health conditions.<br>
+                Mental health conditions, such as depression or anxiety, are real, common and treatable. And recovery is possible. So take the first steps to mental health by taking one of our 3 minutes screening tests.</p>
+                      <a href="{{ url_for('client') }}" class="btn btnPrimary">Take A Self-Assessment</a>
+                    </div>
+                </div>
+            </div>
+        </div><br><br>
+    </div>
 </section>
 {% endblock %}

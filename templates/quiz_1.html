@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %} <br>
+<section>
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">{% block title %} Patient Depression Quiz {% endblock %}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<section>
+    <div class="lightBg">
+        <div class="container"> <br>
+        <form method="post" class="form-check">
+            {% for i in range(0, len) %}
+            <h4>{{questions[i].ques_body}}</h4> <br>
+            <input type="radio" class="btn-check rounded-pill" id="A {{i}}" name="answer {{i}}" value="A" autocomplete="off" checked>
+            <label class="btn btn-outline-success rounded-pill" for="A {{i}}"> {{questions[i].A}}</label>
+            <input type="radio" class="btn-check rounded-pill" id="B {{i}}" name="answer {{i}}" value="B" autocomplete="off">
+            <label class="btn btn-outline-success rounded-pill" for="B {{i}}"> {{questions[i].B}}</label>
+            <input type="radio" class="btn-check rounded-pill" id="C {{i}}" name="answer {{i}}" value="C" autocomplete="off">
+            <label class="btn btn-outline-success rounded-pill" for="C {{i}}"> {{questions[i].C}}</label >
+            <input type="radio" class="btn-check rounded-pill" id="D {{i}}" name="answer {{i}}" value="D" autocomplete="off">
+            <label class="btn btn-outline-success rounded-pill" for="D {{i}}"> {{questions[i].D}}</label><hr/><br>
+            {% endfor %} <br> <br>
+            <button type="submit" class="btn rounded-pill" style="background-color: #32BF84;">Done</button> <br><br>
+        </form>
+    </div>
+</div>
+</section>
+{% endblock %}
