@@ -1,5 +1,7 @@
 import json
 import sqlite3 as sql
+from chatbot import chatbot
+from datetime import datetime
 
 from flask import Flask, render_template, request, url_for, session, flash
 from werkzeug.utils import redirect
@@ -10,6 +12,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 app = Flask(__name__)
+app.static_folder = 'static'
 app.secret_key = b'_5#y2L"FFF4Q8z\n\xec]/'
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -213,3 +216,16 @@ def contact():
         flash(message)
         return redirect(url_for('home'))
     return render_template('contact.html')
+
+
+@app.route("/chat")
+def chat():
+    dt = datetime.now()
+    now = dt.strftime('%H:%M')
+    return render_template("chat.html", now=now)
+
+
+@app.route("/get")
+def get_bot_response():
+    user_text = request.args.get('msg')
+    return str(chatbot.get_response(user_text))

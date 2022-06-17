@@ -4,7 +4,6 @@
     <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
       <link rel="stylesheet" href="https://unpkg.com/swiper@7.0.5/swiper-bundle.min.css">
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
@@ -28,9 +27,10 @@
               <div class="navCollapseCol">
                 <div class="navCol">
                   <ul>
-                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="{{ url_for('client') }}">Take A Self-Assessment</a></li>
-                    <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                      <li><a href="{{ url_for('home') }}">Home</a></li>
+                      <li><a href="{{ url_for('client') }}">Take A Self-Assessment</a></li>
+                      <li><a href="{{ url_for('chat') }}" target="_blank">Chat With Us</a></li>
+                      <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
                   </ul>
                 </div>
               </div>
