@@ -9,8 +9,6 @@ from flask_session import Session
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from service import create_bot
-from train import train_with_csv, train_with_corpus
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -18,12 +16,7 @@ app.secret_key = b'_5#y2L"FFF4Q8z\n\xec]/'
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
-# create the bot
-chatbot = create_bot()
 
-# train
-train_with_corpus(chatbot, 'chatterbot.corpus.english')
-train_with_csv(chatbot, 'data/mental_health_faq.csv')
 
 with open("questions.json", "r") as read_file:
     questions = json.load(read_file)
@@ -33,6 +26,7 @@ with open("add_data_file.json", "r") as read_file:
 
 ans_depression = []
 ans_anxiety = []
+quizes = []
 
 
 def send_email(subject, message_text):
@@ -146,7 +140,7 @@ def client():
     return render_template('client_details.html')
 
 
-@app.route('/additional-info', methods=('GET', 'POST'))
+@app.route('/initial-quiz', methods=('GET', 'POST'))
 def additional():
     length = len(add_questions)
     if request.method == 'POST':
@@ -155,22 +149,22 @@ def additional():
         answer3 = request.form['answer 2']
         answer4 = request.form['answer 3']
         if answer1 == 'Yes' or answer2 == 'Yes':
-            try:
-                select_mental_1 = request.form.getlist('specify 0')
-                select_mental_2 = request.form.getlist('specify 1')
-            except ValueError:
-                return redirect(url_for('mental'))
-            return redirect(url_for('mental'))
-        elif answer3 == 'Yes' or answer4 == 'Yes':
-            try:
-                select_mental_3 = request.form.getlist('specify 2')
-                select_mental_4 = request.form.getlist('specify 3')
-            except ValueError:
-                return redirect(url_for('anxiety'))
-            return redirect(url_for('anxiety'))
-        else:
+            link = "mental-quiz"
+            name = "Depression Quiz"
+            t = (link, name)
+            quizes.append(t)
+
+        if answer3 == 'Yes' or answer4 == 'Yes':
+            link = "anxiety-quiz"
+            name = "Anxiety Quiz"
+            t = (link, name)
+            quizes.append(t)
+
+        if len(quizes) == 0:
             return redirect(url_for('home'))
-    return render_template('additional_question.html', q=add_questions, len=length)
+        else:
+            return render_template("quizes.html", quizes=quizes)
+    return render_template('initial_questions.html', q=add_questions, len=length)
 
 
 @app.route('/mental-quiz', methods=('GET', 'POST'))
@@ -223,19 +217,6 @@ def contact():
         flash(message)
         return redirect(url_for('home'))
     return render_template('contact.html')
-
-
-@app.route("/chat")
-def chat():
-    dt = datetime.now()
-    now = dt.strftime('%H:%M')
-    return render_template("chat.html", now=now)
-
-
-@app.route("/get")
-def get_bot_response():
-    user_text = request.args.get('msg')
-    return str(chatbot.get_response(user_text))
 
 
 if __name__ == '__main__':

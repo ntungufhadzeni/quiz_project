@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %} <br>
+<section class="main">
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                  <h1 class="xlTitle pb-md-3">{% block title %} Recommended Quizzes{% endblock %}</h1>
+                  <p>We recommend that you take one of this quiz. We based our </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="main">
+    <div>
+        <div class="container">
+            {% for quiz, name in quizes %}
+                <a href="{{quiz}}" class="btn btnPrimary" target="_blank">{{name}}</a>
+            {% endfor %}
+    </div>
+</div>
+</section>
+{% endblock %}

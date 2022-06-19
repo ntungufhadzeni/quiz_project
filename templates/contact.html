@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section>
+    <section class="main">
       <div class="innerPageBannerCol">
         <div class="container">
           <div class="row g-4 g-md-3  align-items-center">
@@ -17,11 +17,10 @@
       </div>
     </section>
 
-    <section>
-      <div class="lightBg">
+    <section class="main">
         <div class="container">
-            <form method="post"> <br> <br>
-                <div class="row">
+            <form method="post">
+                <div>
                     <div class="col-md-8">
                         <input type="text" name="name" placeholder="Your name">
                     </div>
@@ -45,6 +44,5 @@
                 <input class='btn btnPrimary' type="submit" value="Submit"> <br><br>
             </form>
         </div>
-      </div>
     </section>
 {% endblock %}
