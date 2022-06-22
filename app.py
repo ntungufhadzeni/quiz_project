@@ -1,14 +1,13 @@
 import json
+import smtplib
 import sqlite3 as sql
-from datetime import datetime
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 from flask import Flask, render_template, request, url_for, session, flash
 from werkzeug.utils import redirect
-from flask_session import Session
 
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+from flask_session import Session
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -16,7 +15,6 @@ app.secret_key = b'_5#y2L"FFF4Q8z\n\xec]/'
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
-
 
 with open("questions.json", "r") as read_file:
     questions = json.load(read_file)
@@ -116,7 +114,8 @@ def home():
 @app.route('/about-you', methods=['GET', 'POST'])
 def client():
     if request.method == 'POST':
-        name = request.form['firstname']
+        session['name'] = request.form['firstname'] + " " + request.form['lastname']
+        session['email'] = request.form['email']
         return redirect(url_for('additional'))
 
     return render_template('client_details.html')
@@ -201,7 +200,7 @@ def contact():
         message = 'Message received, we will get back to you soon'
         flash(message)
         return redirect(url_for('home'))
-    return render_template('contact.html')
+    return render_template('contact.html', name=session['name'], email=session['email'])
 
 
 @app.route('/self-assessment')
