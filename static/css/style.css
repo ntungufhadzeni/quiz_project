@@ -3,8 +3,8 @@
 /* font-family: 'Courier Prime', monospace;
 font-family: 'Heebo', sans-serif; */
 :root {
-  --primaryColor: #9C07B6;
-  --primaryDarkColor: #3D0048;
+  --primaryColor: #387C44;
+  --primaryDarkColor: #FFFFFF;
   --primaryHoverColor: #900AA8;
   --secondaryColor: #F9B000;
   --baseColor: #21243D;
@@ -72,14 +72,15 @@ a, .btn {
   font-size: 20px;
   font-weight: var(--medium);
   padding: 8px 20px;
-  border-radius: 2px;
+  border-radius: 25px;
 }
 .btnPrimary {
-  background-color: var(--primaryColor);
-  color: var(--bs-white);
+  background-color: var(--bs-white);
+    border: 1px solid var(--primaryColor);
+  color: var(--primaryColor);
 }
 .btnPrimary:hover {
-  background-color: var(--primaryDarkColor);
+  background-color: var(--primaryColor);
   color: var(--bs-white);
 }
 .btnOutline {

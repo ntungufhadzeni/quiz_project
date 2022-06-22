@@ -38,9 +38,20 @@
             <hr/><br>
             {% endfor %}
             <br>
-            <button type="submit" class="btn rounded-pill" style="background-color: #32BF84;">Next</button><br> <br>
+            <button type="submit" class="btn btnPrimary">Next</button><br> <br>
         </form>
     </div>
 </div>
 </section>
+<script>
+        const btnCheck = document.getElementsByClassName("btn-check rounded-pill");
+        const specify = document.getElementsByTagName("select");
+
+        btnCheck.onclick = function () {
+            if (btnCheck.value == 'No') specify.disabled = true;
+            else specify.disabled = false;
+
+
+        }
+</script>
 {% endblock %}

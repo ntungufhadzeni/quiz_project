@@ -26,7 +26,6 @@ with open("add_data_file.json", "r") as read_file:
 
 ans_depression = []
 ans_anxiety = []
-quizes = []
 
 
 def send_email(subject, message_text):
@@ -117,24 +116,7 @@ def home():
 @app.route('/about-you', methods=['GET', 'POST'])
 def client():
     if request.method == 'POST':
-        session['name'] = request.form['firstname']
-        session['lastname'] = request.form['lastname']
-        session['cell'] = request.form['cell']
-        session['email'] = request.form['email']
-        session['age'] = request.form['age']
-        session['gender'] = request.form['gender']
-        session['rank'] = request.form['rank']
-        session['race'] = request.form['race']
-        session['province'] = request.form['province']
-        session['postal'] = request.form['postal']
-        session['marital'] = request.form['marital']
-        session['address'] = request.form['addr1'] + ', ' + request.form['addr2'] + ', ' + request.form['city']
-        session['education'] = request.form['education']
-        session['years employed'] = request.form['years employed']
-        session['training'] = request.form['training']
-        session['religion'] = request.form['religion']
-
-        save_to_db()
+        name = request.form['firstname']
         return redirect(url_for('additional'))
 
     return render_template('client_details.html')
@@ -143,6 +125,7 @@ def client():
 @app.route('/initial-quiz', methods=('GET', 'POST'))
 def additional():
     length = len(add_questions)
+    quizes = []
     if request.method == 'POST':
         answer1 = request.form['answer 0']
         answer2 = request.form['answer 1']
@@ -217,6 +200,11 @@ def contact():
         flash(message)
         return redirect(url_for('home'))
     return render_template('contact.html')
+
+
+@app.route('/self-assessment')
+def assessments():
+    return render_template('questionaire.html')
 
 
 if __name__ == '__main__':
