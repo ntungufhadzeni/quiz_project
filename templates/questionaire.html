@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %} <br>
+<section class="main">
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                  <h1 class="xlTitle pb-md-3">{% block title %} Recommended Quizzes{% endblock %}</h1>
+                  <p>We recommend that you take one of this quiz. We based our </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="main">
+    <div>
+        <div class="container">
+            <a href="{{ url_for('mental') }}" class="btn btnPrimary" target="_blank">Depression Quiz</a>
+            <a href="{{ url_for('anxiety') }}" class="btn btnPrimary" target="_blank">Anxiety Quiz</a>
+        </div> <br>
+    </div>
+</section>
+{% endblock %}
