@@ -20,12 +20,9 @@ html {
   scroll-behavior: smooth;
 }
 body {
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
     font-family: var(--baseFont);
-    color: var(--baseColor);
-    line-height: normal;
+  color: var(--baseColor);
+  line-height: normal;
 }
 ul {
   margin: 0;
@@ -818,7 +815,7 @@ form {
 }
 .main {
     width: 100%;
-    max-width: 850px;
+    max-width: 645px;
     padding: 1rem 1.5rem;
     margin: auto;
 }
