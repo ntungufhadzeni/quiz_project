@@ -19,8 +19,9 @@
         <div class="container"> <br>
         <form method="post">
             {% for i in range(0, len) %}
-            <br>
-            <h4>{{ q[i]['q'] }}</h4> <br>
+            <div class="question">
+                <h4>{{ q[i]['q'] }}</h4>
+            </div>
             <input type="radio" class="btn-check rounded-pill" id="Yes {{i}}" name="answer {{i}}" value="Yes" autocomplete="off">
             <label class="btn btn-outline-success rounded-pill" for="Yes {{i}}">Yes</label>
             <input type="radio" class="btn-check rounded-pill" id="No {{i}}" name="answer {{i}}" value="No" autocomplete="off" checked>
@@ -35,10 +36,10 @@
                     </select>
                 </div>
             </div>
-            <hr/><br>
             {% endfor %}
-            <br>
-            <button type="submit" class="btn btnPrimary">Next</button><br> <br>
+            <div class="submit">
+                <button type="submit" class="btn btnPrimary">Next</button>
+            </div>
         </form>
     </div>
 </div>

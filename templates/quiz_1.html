@@ -7,7 +7,7 @@
           <div class="row g-4 g-md-3  align-items-center">
             <div class="col-md-6">
               <div class="bannerContent">
-                <h1 class="xlTitle pb-md-3">{% block title %} Patient Depression Quiz {% endblock %}</h1>
+                <h1 class="xlTitle pb-md-3">{% block title %} {{name}} {% endblock %}</h1>
               </div>
             </div>
           </div>
@@ -16,20 +16,32 @@
 </section>
 <section class="main">
     <div>
-        <div class="container"> <br>
+        <div class="container">
         <form method="post" class="form-check">
             {% for i in range(0, len) %}
-            <h4>{{questions[i].ques_body}}</h4> <br>
-            <input type="radio" class="btn-check rounded-pill" id="A {{i}}" name="answer {{i}}" value="A" autocomplete="off" checked>
-            <label class="btn btn-outline-success rounded-pill" for="A {{i}}"> {{questions[i].A}}</label>
-            <input type="radio" class="btn-check rounded-pill" id="B {{i}}" name="answer {{i}}" value="B" autocomplete="off">
-            <label class="btn btn-outline-success rounded-pill" for="B {{i}}"> {{questions[i].B}}</label>
-            <input type="radio" class="btn-check rounded-pill" id="C {{i}}" name="answer {{i}}" value="C" autocomplete="off">
-            <label class="btn btn-outline-success rounded-pill" for="C {{i}}"> {{questions[i].C}}</label >
-            <input type="radio" class="btn-check rounded-pill" id="D {{i}}" name="answer {{i}}" value="D" autocomplete="off">
-            <label class="btn btn-outline-success rounded-pill" for="D {{i}}"> {{questions[i].D}}</label><hr/><br>
-            {% endfor %} <br> <br>
-            <button type="submit" class="btn btnPrimary" style="background-color: #32BF84;">Done</button> <br><br>
+            <div class="question">
+                <h3>{{questions[i].ques_body}}</h3>
+            </div>
+            <div class="custom-check">
+                <input type="radio" class="input-radio" id="A {{i}}" name="answer {{i}}" value="A" autocomplete="off" checked>
+                <label class="check-label" for="A {{i}}"> {{questions[i].A}}</label>
+            </div>
+            <div class="custom-check">
+                <input type="radio" class="input-radio" id="B {{i}}" name="answer {{i}}" value="B" autocomplete="off">
+                <label class="check-label" for="B {{i}}"> {{questions[i].B}}</label>
+            </div>
+            <div class="custom-check">
+                <input type="radio" class="input-radio" id="C {{i}}" name="answer {{i}}" value="C" autocomplete="off">
+                <label class="check-label" for="C {{i}}"> {{questions[i].C}}</label>
+            </div>
+            <div class="custom-check">
+                <input type="radio" class="input-radio" id="D {{i}}" name="answer {{i}}" value="D" autocomplete="off">
+                <label class="check-label" for="D {{i}}"> {{questions[i].D}}</label>
+            </div><hr/>
+            {% endfor %}
+            <div class="submit">
+                <button type="submit" class="btn btnPrimary">Done</button>
+            </div>
         </form>
     </div>
 </div>

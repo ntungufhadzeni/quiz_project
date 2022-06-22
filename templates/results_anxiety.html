@@ -1,13 +1,15 @@
-{% block content %} <br>
-<section>
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="main">
       <div class="innerPageBannerCol">
         <div class="container">
           <div class="row g-4 g-md-3  align-items-center">
             <div class="col-md-6">
               <div class="bannerContent">
-                  <h1 class="xlTitle pb-md-3">{% block title %} Patient Depression Questionnaire {% endblock %}</h1>
+                  <h1 class="xlTitle pb-md-3">{% block title %} Anxiety Quiz Results {% endblock %}</h1>
                   <p>Disclaimer: This screen is not meant to be a diagnosis. Diagnosis and care of mental health conditions
-                      can be difficult. Having symptoms of depression might not mean that you're having depression.
+                      can be difficult. Having symptoms of <b>anxiety</b> might not mean that you're having depression.
                       In addition, symptoms of depression can be caused by other mental health conditions,
                       such as bipolar disorder, or other health problems, like a thyroid disorder.
                       A trained professional, such as a doctor or a mental health provider,
@@ -18,13 +20,17 @@
         </div>
       </div>
 </section>
-<section>
+<section class="main">
     <div class="lightBg">
-        <div class="container"><br>
-            <h4>Your Depression Test score was: {{ diagnosis }}</h4> <br>
-            <a href="{{ url_for('home') }}" class="btn btnPrimary" style="background-color: #32BF84;">Home</a>
-            <a href="{{ url_for('contact') }}" class="btn btnPrimary" style="background-color: #32BF84;">Book Appointment</a>
-        </div><br><br>
+        <div class="container">
+            <div class="result">
+                <h4>Your Anxiety Test score is: {{ diagnosis }}</h4>
+            </div>
+            <div class="quiz">
+                <a href="{{ url_for('home') }}" class="btn btnPrimary">Home</a>
+                <a href="{{ url_for('contact') }}" class="btn btnPrimary">Book Appointment</a>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

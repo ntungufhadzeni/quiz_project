@@ -16,12 +16,10 @@
       </div>
 </section>
 <section class="main">
-    <div>
-        <div class="container">
-            {% for quiz, name in quizes %}
-                <a href="{{quiz}}" class="btn btnPrimary" target="_blank">{{name}}</a>
-            {% endfor %}
-        </div> <br>
+    <div class="container">
+        {% for quiz, name in quizes %}
+            <a href="{{quiz}}" class="btn btnPrimary quiz" target="_blank">{{name}}</a>
+        {% endfor %}
     </div>
 </section>
 {% endblock %}

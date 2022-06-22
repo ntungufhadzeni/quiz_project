@@ -153,25 +153,27 @@ def additional():
 @app.route('/mental-quiz', methods=('GET', 'POST'))
 def mental():
     lens = len(questions[0])
+    name = 'Depression Quiz'
     if request.method == 'POST':
         for i in range(lens):
             ans_depression.append(request.form[f'answer {i}'])
         diagnosis = depression_calc(ans_depression)
         session['mental_diagnosis'] = diagnosis
         return redirect(url_for('mental_result'))
-    return render_template('quiz_1.html', questions=questions[0], len=lens)
+    return render_template('quiz_1.html', questions=questions[0], len=lens, name=name)
 
 
 @app.route('/anxiety-quiz', methods=('GET', 'POST'))
 def anxiety():
     lens = len(questions[1])
+    name = 'Anxiety Quiz'
     if request.method == 'POST':
         for i in range(lens):
             ans_anxiety.append(request.form[f'answer {i}'])
         diagnosis = anxiety_calc(ans_anxiety)
         session['anxiety_diagnosis'] = diagnosis
         return redirect(url_for('anxiety_result'))
-    return render_template('quiz_1.html', questions=questions[1], len=lens)
+    return render_template('quiz_1.html', questions=questions[1], len=lens, name=name)
 
 
 @app.route('/mental-results', methods=('GET', 'POST'))
