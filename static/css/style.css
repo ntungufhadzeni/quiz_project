@@ -3,8 +3,8 @@
 /* font-family: 'Courier Prime', monospace;
 font-family: 'Heebo', sans-serif; */
 :root {
-  --primaryColor: #387C44;
-  --primaryDarkColor: #FFFFFF;
+  --primaryColor: #9C07B6;
+  --primaryDarkColor: #3D0048;
   --primaryHoverColor: #900AA8;
   --secondaryColor: #F9B000;
   --baseColor: #21243D;
@@ -798,7 +798,7 @@ hr {
 }
 
 form {
-  width: 800px;
+  width: 645px;
 }
 
 .intl-tel-input {
