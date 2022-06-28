@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %} <br>
+<section class="main">
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">{% block title %} Past Alcohol or Drug Use Quiz {% endblock %}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="main">
+    <div>
+        <div class="container">
+        <form method="post" class="form-check">
+            <div class="row g-2 align-items-center mb-xm-2">
+                <div class="col-auto">
+                    <label class="col-form-label">Choose one Alcohol or Drug Category for Which This Form is Being Filled Out</label>
+                    <select class="form-select" id="drug" name="drug" placeholder="Choose">
+                        <option selected>Choose...</option>
+                        <option value="Alcohol Use">Alcohol Use</option>
+                        <option value="Cannabis Use">Cannabis Use</option>
+                        <option value="Hallucinogen Use (Phencyclidine (LSD))">Hallucinogen Use (Phencyclidine (LSD))</option>
+                        <option value="Hallucinogen Use (Other Hallucinogen)">Hallucinogen Use (Other Hallucinogen)</option>
+                        <option value="Inhalants Use">Inhalants Use</option>
+                        <option value="Opioid Use">Opioid Use</option>
+                        <option value="Sedative, Hypnotic, Anxiolytic Use">Sedative, Hypnotic, Anxiolytic Use</option>
+                        <option value="Stimulant Use (Amphetamines)">Stimulant Use (Amphetamines)</option>
+                        <option value="Stimulant Use (Cocaine)">Stimulant Use (Cocaine)</option>
+                        <option value="Stimulant Use (Other)">Stimulant Use (Other)</option>
+                        <option value="Tobacco Use">Tobacco Use</option>
+                    </select>
+                </div>
+            </div> <hr>
+            {% for i in range(0, len) %}
+            <div class="question">
+                <h3>{{questions[i].ques_body}}</h3>
+            </div>
+            <div class="custom-check">
+                <input type="radio" class="input-radio" id="Y {{i}}" name="answer {{i}}" value="Y" autocomplete="off">
+                <label class="check-label" for="Y {{i}}"> {{questions[i].Y}}</label>
+            </div>
+            <div class="custom-check">
+                <input type="radio" class="input-radio" id="N {{i}}" name="answer {{i}}" value="N" autocomplete="off" checked>
+                <label class="check-label" for="N {{i}}"> {{questions[i].N}}</label>
+            </div><hr/>
+            {% endfor %}
+            <div class="submit">
+                <button type="submit" class="btn btnPrimary">Done</button>
+            </div>
+        </form>
+    </div>
+</div>
+</section>
+{% endblock %}
