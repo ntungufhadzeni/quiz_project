@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Heebo:wght@400;500;700;900&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=IBM Plex Sans Condensed");
 /* font-family: 'Courier Prime', monospace;
 font-family: 'Heebo', sans-serif; */
 :root {
@@ -8,7 +9,7 @@ font-family: 'Heebo', sans-serif; */
   --primaryHoverColor: #900AA8;
   --secondaryColor: #F9B000;
   --baseColor: #21243D;
-  --baseFont: 'Heebo', sans-serif;
+  --baseFont: 'IBM Plex Sans Condensed', sans-serif;
   --titleFont: 'Courier Prime', monospace;
   --regular: 400;
   --medium: 500;
@@ -24,6 +25,9 @@ body {
   color: var(--baseColor);
   line-height: normal;
 }
+h1 {
+    font-family: var(--titleFont);
+}
 ul {
   margin: 0;
   padding: 0;
@@ -37,6 +41,7 @@ footer {
 }
 img {
   max-width: 100%;
+    border-radius: 10px;
 }
 a {
   color: inherit;
@@ -270,7 +275,7 @@ a, .btn {
 
 /* banner section */
 .bannerSection {
-	padding: 180px 0 80px;
+	padding: 180px 0 0;
 }
 .bannerUserImg {
   margin-left: 30px;
@@ -473,6 +478,7 @@ body.navToggleActive {
 }
 .socialCol li {
   display: inline-block;
+    padding: 20px 0;
 }
 .socialCol li + li {
   padding-left: 35px;
@@ -494,7 +500,7 @@ body.navToggleActive {
 
 /* portfolio page */
 .innerPageBannerCol {
-	padding: 180px 0 100px;
+	padding: 180px 0 0;
 }
 .portfolioContentMain {
   position: relative;
@@ -816,7 +822,7 @@ hr {
     max-width: 645px;
     padding: 1rem 1.5rem;
     margin: auto;
-    padding: 0 0 80px;
+    padding: 0 0 50px;
 }
 
 .submit {
@@ -863,4 +869,67 @@ hr {
 
 .check-label {
     font-size: 20px;
+}
+
+.footer-text {
+    color: #3D4849;
+    font-size: 12px;
+}
+
+.footer-links {
+    color: #0a53be;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.container-text {
+    display: flex;
+    align-items: flex-start;
+    gap: .5rem;
+}
+
+.text, span {
+    font-size: 20px;
+}
+
+.ul-text {
+    height: 100px;
+    list-style: none;
+    overflow: hidden;
+}
+
+.ul-text li {
+    position: relative;
+    height: 100px;
+    animation: to-top 12s steps(4) infinite;
+}
+
+.ul-text li span {
+    color: rgb(39, 217, 8);
+}
+
+.ul-text li::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border-left: 4px solid white;
+    animation:  to-right 3s steps(19) infinite;
+}
+
+@keyframes to-right {
+    40%, 60%{
+        left: calc(100% + 50px);
+    }
+    95%{
+        left: 0;
+    }
+}
+
+@keyframes to-top {
+    100%{
+        transform: translateY(-400%);
+    }
 }

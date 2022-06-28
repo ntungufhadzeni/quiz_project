@@ -53,15 +53,22 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <p style="font-weight: bold;">Head Office: Masala Ramabulana Holdings</p>
-                            <p>11 Thora Cres<br>Wynberg<br>Sandton<br>2090<br>Tel: 011 262 2107</p>
+                            <p class="footer-text"><b>Head Office: Masala Ramabulana Holdings</b></p>
+                            <ul>
+                                <li class="footer-text">11 Thora Cres</li>
+                                <li class="footer-text">Wynberg</li>
+                                <li class="footer-text">Sandton</li>
+                                <li class="footer-text">2090</li>
+                                <li><a class="footer-links" href="tel:+27112622107"><b>Tel:</b> 011 262 2107</a></li>
+                                <li><a class="footer-links" href="mailto:mental.health@mrhconsult.co.za"><b>Email:</b> mental.health@mrhconsult.co.za</a></li>
+                            </ul>
                         </div>
                         <div class="col">
-                            <p style="font-weight: bold;">Links</p>
+                            <p class="footer-text"><b>Links</b></p>
                             <ul>
-                                <li><a href="{{ url_for('home') }}">Home</a></li>
-                                <li><a href="{{ url_for('assessments') }}">Take A Self-Assessment</a></li>
-                                <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                                <li><a class="footer-links" href="{{ url_for('home') }}">Home</a></li>
+                                <li><a class="footer-links" href="{{ url_for('assessments') }}">Take A Self-Assessment</a></li>
+                                <li><a class="footer-links" href="{{ url_for('contact') }}">Contact Us</a></li>
                             </ul><br>
                         </div>
                     </div>
@@ -74,7 +81,7 @@
                     </ul>
                 </div>
                 <div class="copyrightCol">
-                    <h6>© 2022 Copyright: Masala Ramabulana Holdings</h6>
+                    <p class="footer-text">© 2022 Copyright: Masala Ramabulana Holdings</p>
                 </div>
             </div>
         </div>

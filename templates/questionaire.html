@@ -8,7 +8,7 @@
             <div class="col-md-6">
               <div class="bannerContent">
                   <h1 class="xlTitle pb-md-3">{% block title %} Available Quizzes{% endblock %}</h1>
-                  <p>We recommend that you take one of this quiz. We based our </p>
+                  <p>We recommend that you take one of these quizzes. We based our </p>
               </div>
             </div>
           </div>
@@ -19,6 +19,7 @@
     <div class="container-fluid">
         <a href="{{ url_for('mental') }}" class="btn btnPrimary quiz" target="_blank">Depression Quiz</a>
         <a href="{{ url_for('anxiety') }}" class="btn btnPrimary quiz" target="_blank">Anxiety Quiz</a>
+        <a href="{{ url_for('alcohol_drugs') }}" class="btn btnPrimary quiz" target="_blank">Past Alcohol or Drug Use Quiz</a>
     </div>
 </section>
 {% endblock %}

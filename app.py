@@ -22,20 +22,17 @@ with open("questions.json", "r") as read_file:
 with open("add_data_file.json", "r") as read_file:
     add_questions = json.load(read_file)
 
-ans_depression = []
-ans_anxiety = []
 
-
-def send_email(subject, message_text):
-    sender_email = ""
-    password = ""
-    receiver_email = ""
+def send_email(subject, receiver, message_text):
+    sender_email = "mental.health@mrhconsult.co.za"
+    password = "MrhHealth"
+    receiver_email = receiver
     message = MIMEMultipart()
     message['From'] = sender_email
     message['To'] = receiver_email
     message['Subject'] = subject
-    message.attach(MIMEText(message_text, 'plain'))
-    e_session = smtplib.SMTP('smtp.gmail.com', 587)
+    message.attach(MIMEText(message_text, "html"))
+    e_session = smtplib.SMTP('mail.mrhconsult.co.za', 587)
     e_session.starttls()
     e_session.login(sender_email, password)
     text = message.as_string()
@@ -106,6 +103,26 @@ def anxiety_calc(lst):
     return msg
 
 
+def substance_calc(lst):
+    m = 0
+    for c in lst:
+        if c == 'Y':
+            m += 1
+        else:
+            m += 0
+
+    if m < 2:
+        msg = 'No symptoms for '
+    elif 2 <= m <= 3:
+        msg = 'Mild symptoms for '
+    elif 4 <= m <= 5:
+        msg = 'Moderate symptoms for '
+    elif m >= 6:
+        msg = 'Severe symptoms for '
+
+    return msg
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -116,8 +133,28 @@ def client():
     if request.method == 'POST':
         session['name'] = request.form['firstname'] + " " + request.form['lastname']
         session['email'] = request.form['email']
+        subject = 'Mental Health Check'
+        receiver = request.form['email']
+        mail = f"""
+            <!doctype html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport"
+                      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Document</title>
+            </head>
+            <body>
+                <p>Hi, {session['name']} </p>
+                <p>Thank you for visiting our website. We have captured your contact details and we will give you feedback soon.</p>
+                <p>Kind regards,</p>
+                <p>Mental Health Check</p>
+            </body>
+            </html>
+            """
+        send_email(subject, receiver, mail)
         return redirect(url_for('additional'))
-
     return render_template('client_details.html')
 
 
@@ -151,6 +188,7 @@ def additional():
 
 @app.route('/mental-quiz', methods=('GET', 'POST'))
 def mental():
+    ans_depression = []
     lens = len(questions[0])
     name = 'Depression Quiz'
     if request.method == 'POST':
@@ -164,6 +202,7 @@ def mental():
 
 @app.route('/anxiety-quiz', methods=('GET', 'POST'))
 def anxiety():
+    ans_anxiety = []
     lens = len(questions[1])
     name = 'Anxiety Quiz'
     if request.method == 'POST':
@@ -195,17 +234,54 @@ def contact():
         phone = request.form['phone']
         _email = request.form['email']
         text = request.form['message']
-        message = 'Name: ' + name + '\n' + 'Email: ' + _email + '\n' + 'Phone: ' + phone + '\n' + text
-        # send_email(subject, message)
-        message = 'Message received, we will get back to you soon'
-        flash(message)
+        sender_email = "mental.health@mrhconsult.co.za"
+        contacts = 'Name: ' + name + '\n' + 'Email: ' + _email + '\n' + 'Phone: ' + phone + '\n\n'
+        mail = f"""
+        <!doctype html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport"
+                  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Document</title>
+        </head>
+        <body>
+            <p>Hi, </p>
+            <p>I would like to book an appointment on: {text} </p>
+            <p>My Contacts details are as follows:</p>
+            <p>{contacts}</p>
+        </body>
+        </html>
+        """
+        send_email(subject, sender_email, mail)
         return redirect(url_for('home'))
-    return render_template('contact.html', name=session['name'], email=session['email'])
+    return render_template('contact.html')
 
 
 @app.route('/self-assessment')
 def assessments():
     return render_template('questionaire.html')
+
+
+@app.route('/alcohol-drug-quiz', methods=('GET', 'POST'))
+def alcohol_drugs():
+    alcohol = []
+    lens = len(questions[2])
+    if request.method == 'POST':
+        for i in range(lens):
+            substance = request.form['drug']
+            alcohol.append(request.form[f'answer {i}'])
+        diagnosis = substance_calc(alcohol)
+        session['substance_diagnosis'] = diagnosis + substance
+        return redirect(url_for('substance_result'))
+    return render_template('quiz_2.html', questions=questions[2], len=lens)
+
+
+@app.route('/substance-abuse-results', methods=('GET', 'POST'))
+def substance_result():
+    diagnosis = session['substance_diagnosis']
+    return render_template('results_substance.html', diagnosis=diagnosis)
 
 
 if __name__ == '__main__':

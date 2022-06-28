@@ -9,7 +9,7 @@
               <div class="bannerContent">
                 <h1 class="xlTitle pb-md-3">Contact us below</h1>
                   <p>Thank you for reaching out to Mental Health Check. If you are booking for appointment,
-                  please provide best time when you will be available to receive a call.</p>
+                  please provide best time when you will be available to receive a call.</p> <hr>
               </div>
             </div>
           </div>
@@ -22,22 +22,26 @@
             <form method="post">
                 <div class="row">
                     <div class="col-md-8">
-                        <input type="text" name="name" placeholder="Your name" value="{{name}}">
+                        <label class="col-form-label">Name</label>
+                        <input type="text" name="name" placeholder="Your name">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-8">
-                        <input type="email" name="email" placeholder="Your email address" value="{{email}}">
+                        <label class="col-form-label">Email</label>
+                        <input type="email" name="email" placeholder="Your email address">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-8">
-                        <input type="tel" name="mobile" placeholder="Your mobile number">
+                        <label class="col-form-label">Mobile</label>
+                        <input type="tel" name="phone" placeholder="Your mobile number">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-8">
-                        <textarea name="message" placeholder="Write something" rows="6"></textarea>
+                        <label class="col-form-label">Message</label>
+                        <textarea name="message" placeholder="Specify the date if you are booking an appointment." rows="6"></textarea>
                     </div>
                 </div>
                 <div class="submit">
