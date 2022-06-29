@@ -75,3 +75,5 @@ dmypy.json
 cython_debug/
 flask_session/
 /flask_session/
+/flask_session/
+.idea/

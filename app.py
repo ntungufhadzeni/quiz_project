@@ -4,7 +4,7 @@ import sqlite3 as sql
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from flask import Flask, render_template, request, url_for, session, flash
+from flask import Flask, render_template, request, url_for, session
 from werkzeug.utils import redirect
 
 from flask_session import Session
