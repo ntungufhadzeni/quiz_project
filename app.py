@@ -153,7 +153,8 @@ def client():
             </body>
             </html>
             """
-        send_email(subject, receiver, mail)
+        if receiver != '':
+            send_email(subject, receiver, mail)
         return redirect(url_for('additional'))
     return render_template('client_details.html')
 
@@ -161,28 +162,37 @@ def client():
 @app.route('/initial-quiz', methods=('GET', 'POST'))
 def additional():
     length = len(add_questions)
-    quizes = []
+    quizzes = []
     if request.method == 'POST':
         answer1 = request.form['answer 0']
         answer2 = request.form['answer 1']
         answer3 = request.form['answer 2']
         answer4 = request.form['answer 3']
+        answer5 = request.form['answer 4']
+        answer6 = request.form['answer 5']
+        answer7 = request.form['answer 6']
         if answer1 == 'Yes' or answer2 == 'Yes':
             link = "mental-quiz"
             name = "Depression Quiz"
             t = (link, name)
-            quizes.append(t)
+            quizzes.append(t)
 
         if answer3 == 'Yes' or answer4 == 'Yes':
+            link = "alcohol-drug-quiz"
+            name = "Past Alcohol or Drug Use Quiz"
+            t = (link, name)
+            quizzes.append(t)
+
+        if answer6 == 'Yes' or answer7 == 'Yes':
             link = "anxiety-quiz"
             name = "Anxiety Quiz"
             t = (link, name)
-            quizes.append(t)
+            quizzes.append(t)
 
-        if len(quizes) == 0:
+        if len(quizzes) == 0:
             return redirect(url_for('home'))
         else:
-            return render_template("quizes.html", quizes=quizes)
+            return render_template("quizes.html", quizes=quizzes)
     return render_template('initial_questions.html', q=add_questions, len=length)
 
 
