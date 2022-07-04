@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'polmed-quiz'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D8F5A12631E441AB8E734CD2A3C7E1C4 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_25B050A519EC401FB9964962B3B89E74 }}
