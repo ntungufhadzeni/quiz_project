@@ -8,8 +8,6 @@
             <div class="col-md-6">
               <div class="bannerContent">
                   <h1 class="xlTitle pb-md-3">{% block title %} Past Alcohol or Drug Use Quiz Results {% endblock %}</h1>
-                  <p>Disclaimer: This screen is not meant to be a diagnosis. A trained professional, such as a doctor or a mental health provider,
-                      can make this determination and finding the right support can help you feel more like you again.</p>
               </div>
             </div>
           </div>
@@ -17,14 +15,16 @@
       </div>
 </section>
 <section class="main">
-    <div class="lightBg">
-        <div class="container">
-            <div class="result">
-                <h4>Your Quiz score is: {{ diagnosis }}</h4>
-            </div>
-            <div class="quiz">
-                <a href="{{ url_for('home') }}" class="btn btnPrimary">Home</a>
-                <a href="{{ url_for('contact') }}" class="btn btnPrimary">Book Appointment</a>
+    <div class="sectionSpaceSm">
+        <div class="container-fluid">
+            <div class="bannerBtnCol">
+                <div class="result">
+                    <h4>Your Assessment score is: {{ diagnosis }}</h4>
+                </div>
+                <div class="quiz">
+                    <a href="{{ url_for('home') }}" class="btn btnPrimary">Home</a>
+                    <a href="{{ url_for('contact') }}" class="btn btnPrimary">Contact Us</a>
+                </div>
             </div>
         </div>
     </div>

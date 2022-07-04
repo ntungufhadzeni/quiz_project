@@ -48,4 +48,3 @@ var swiper = new Swiper(".certificatesSlider", {
 });
 
 $('.alert').alert('close');
-

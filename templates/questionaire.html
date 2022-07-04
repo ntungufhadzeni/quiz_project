@@ -7,8 +7,8 @@
           <div class="row g-4 g-md-3  align-items-center">
             <div class="col-md-6">
               <div class="bannerContent">
-                  <h1 class="xlTitle pb-md-3">{% block title %} Available Quizzes{% endblock %}</h1>
-                  <p>We recommend that you take one of these quizzes. We based our </p>
+                  <h1 class="xlTitle pb-md-3">{% block title %} Available Assessments{% endblock %}</h1>
+                  <p>We recommend that you take one of these assessments</p>
               </div>
             </div>
           </div>
@@ -16,10 +16,14 @@
       </div>
 </section>
 <section class="main">
-    <div class="container-fluid">
-        <a href="{{ url_for('mental') }}" class="btn btnPrimary quiz" target="_blank">Depression Quiz</a>
-        <a href="{{ url_for('anxiety') }}" class="btn btnPrimary quiz" target="_blank">Anxiety Quiz</a>
-        <a href="{{ url_for('alcohol_drugs') }}" class="btn btnPrimary quiz" target="_blank">Past Alcohol or Drug Use Quiz</a>
+    <div class="sectionSpaceSm">
+        <div class="container-fluid">
+            <div class="bannerBtnCol">
+                <a href="{{ url_for('mental') }}" class="btn btnPrimary quiz" target="_blank">Depression Assessment</a>
+                <a href="{{ url_for('anxiety') }}" class="btn btnPrimary quiz" target="_blank">Anxiety Assessment</a>
+                <a href="{{ url_for('alcohol_drugs') }}" class="btn btnPrimary quiz" target="_blank">Past Alcohol or Drug Use Assessment</a>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

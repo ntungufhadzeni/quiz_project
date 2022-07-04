@@ -15,7 +15,7 @@
         <div class="container-fluid">
           <div class="row align-items-center">
             <div class="col-auto">
-              <div class="logoCol"><a><img src="{{ url_for('static', filename='images/company-logo.svg') }}" alt="..." height="64"> Mental Health Check </a></div>
+              <div class="logoCol"><a><img src="{{ url_for('static', filename='images/img2.jpg') }}" alt="..." height="64"> Mental Health Portal </a></div>
             </div>
             <div class="col">
               <div class="d-md-none">
@@ -27,9 +27,8 @@
                 <div class="navCol">
                   <ul>
                       <li><a href="{{ url_for('home') }}">Home</a></li>
-                      <li><a href="{{ url_for('assessments') }}">Take A Self-Assessment</a></li>
+                      <li><a href="{{ url_for('assessments') }}">Self-Assessment Tools</a></li>
                       <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
-                      <li><a href="#">About Us</a></li>
                   </ul>
                 </div>
               </div>
@@ -53,21 +52,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <p class="footer-text"><b>Head Office: Masala Ramabulana Holdings</b></p>
-                            <ul>
-                                <li class="footer-text">11 Thora Cres</li>
-                                <li class="footer-text">Wynberg</li>
-                                <li class="footer-text">Sandton</li>
-                                <li class="footer-text">2090</li>
-                                <li><a class="footer-links" href="tel:+27112622107"><b>Tel:</b> 011 262 2107</a></li>
-                                <li><a class="footer-links" href="mailto:mental.health@mrhconsult.co.za"><b>Email:</b> mental.health@mrhconsult.co.za</a></li>
-                            </ul>
-                        </div>
-                        <div class="col">
                             <p class="footer-text"><b>Links</b></p>
                             <ul>
                                 <li><a class="footer-links" href="{{ url_for('home') }}">Home</a></li>
-                                <li><a class="footer-links" href="{{ url_for('assessments') }}">Take A Self-Assessment</a></li>
+                                <li><a class="footer-links" href="{{ url_for('assessments') }}">Self-Assessment Tools</a></li>
                                 <li><a class="footer-links" href="{{ url_for('contact') }}">Contact Us</a></li>
                             </ul><br>
                         </div>
@@ -81,7 +69,7 @@
                     </ul>
                 </div>
                 <div class="copyrightCol">
-                    <p class="footer-text">© 2022 Copyright: Masala Ramabulana Holdings</p>
+                    <p class="footer-text">© 2022 Copyright: MRH</p>
                 </div>
             </div>
         </div>

@@ -3,21 +3,15 @@
 {% block content %}
 <section class="main">
   <div class="bannerSection">
+      <div class="bannerContent">
         <div class="container">
-          <div class="row g-4 g-md-3  align-items-center">
-            <div class="col-md-auto order-md-last">
-              <div class="bannerUserImg">
-                <img src="{{ url_for('static',filename='images/user-img.jpg') }}" alt="...">
-              </div>
-            </div>
-            <div class="col-md">
-              <div class="bannerContent">
-                <h1 class="xlTitle pb-3">{% block title %} Welcome to Mental Health Check {% endblock %}</h1>
-              </div>
-            </div>
-          </div>
+            <h1 class="xlTitle pb-md-3">{% block title %} Welcome to Our Mental Health Portal {% endblock %}</h1>
+            <img src="{{ url_for('static', filename='images/img1.jpg') }}" class="rounded float-left" alt="..." height="180">
+            <img src="{{ url_for('static', filename='images/img2.jpg') }}" class="rounded float-left" alt="..." height="180">
+            <img src="{{ url_for('static', filename='images/img3.jpg') }}" class="rounded float-left" alt="..." height="180">
         </div>
       </div>
+  </div>
 </section>
 <section class="main">
     <div class="sectionSpaceSm">
@@ -25,10 +19,10 @@
             <div class="bannerBtnCol">
                 <div class="row">
                     <div class="col-auto"> <hr>
-                        <p>Mental Health Check uses online screening to determine whether you are experiencing symptoms
-                            of a mental health conditions. Mental health conditions, such as depression or anxiety,
-                            are real, common and treatable. And recovery is possible. So take the first steps to mental
-                            health by taking one of our 3 minutes screening tests.</p> <br>
+                        <p>Mental Health Portal is an online screening tool for symptoms
+                            of a mental health conditions. Mental health conditions such as depression or anxiety,
+                            are real, common, treatable and recovery is possible. Take the first step to a better
+                            mental well-being by completing one of our 3 minutes screening assessments.</p> <br>
                       <a href="{{ url_for('client') }}" class="btn btnPrimary">Start A Self-Assessment</a>
                     </div>
                 </div>

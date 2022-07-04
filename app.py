@@ -3,10 +3,8 @@ import smtplib
 import sqlite3 as sql
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
 from flask import Flask, render_template, request, url_for, session
 from werkzeug.utils import redirect
-
 from flask_session import Session
 
 app = Flask(__name__)
@@ -173,19 +171,19 @@ def additional():
         answer7 = request.form['answer 6']
         if answer1 == 'Yes' or answer2 == 'Yes':
             link = "mental-quiz"
-            name = "Depression Quiz"
+            name = "Depression Assessment"
             t = (link, name)
             quizzes.append(t)
 
         if answer3 == 'Yes' or answer4 == 'Yes':
             link = "alcohol-drug-quiz"
-            name = "Past Alcohol or Drug Use Quiz"
+            name = "Past Alcohol or Drug Use Assessment"
             t = (link, name)
             quizzes.append(t)
 
         if answer6 == 'Yes' or answer7 == 'Yes':
             link = "anxiety-quiz"
-            name = "Anxiety Quiz"
+            name = "Anxiety Assessment"
             t = (link, name)
             quizzes.append(t)
 
@@ -200,7 +198,7 @@ def additional():
 def mental():
     ans_depression = []
     lens = len(questions[0])
-    name = 'Depression Quiz'
+    name = 'Depression Assessment'
     if request.method == 'POST':
         for i in range(lens):
             ans_depression.append(request.form[f'answer {i}'])
@@ -214,7 +212,7 @@ def mental():
 def anxiety():
     ans_anxiety = []
     lens = len(questions[1])
-    name = 'Anxiety Quiz'
+    name = 'Anxiety Assessment'
     if request.method == 'POST':
         for i in range(lens):
             ans_anxiety.append(request.form[f'answer {i}'])
