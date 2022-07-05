@@ -3,7 +3,7 @@ import smtplib
 import sqlite3 as sql
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from flask import Flask, render_template, request, url_for, session
+from flask import Flask, render_template, request, url_for, session, flash
 from werkzeug.utils import redirect
 from flask_session import Session
 
@@ -188,7 +188,8 @@ def additional():
             quizzes.append(t)
 
         if len(quizzes) == 0:
-            return redirect(url_for('home'))
+            message = 'We can not recommend any assessment for you at the moment.'
+            return render_template("quizes.html", quizes=quizzes, message=message)
         else:
             return render_template("quizes.html", quizes=quizzes)
     return render_template('initial_questions.html', q=add_questions, len=length)
@@ -281,13 +282,13 @@ def anxiety_result():
 @app.route('/contact-us', methods=('GET', 'POST'))
 def contact():
     if request.method == 'POST':
-        subject = 'Mental Health Portal'
+        subject = request.form['subject']
         name = request.form['name']
         phone = request.form['phone']
-        _email = request.form['email']
+        email_address = request.form['email']
         text = request.form['message']
         sender_email = "mental.health@mrhconsult.co.za"
-        contacts = 'Name: ' + name + '\n' + 'Email: ' + _email + '\n' + 'Phone: ' + phone + '\n\n'
+        contacts = 'Name: ' + name + '\n' + 'Email: ' + email_address + '\n' + 'Phone: ' + phone + '\n\n'
         mail = f"""
         <!doctype html>
         <html lang="en">
@@ -307,7 +308,7 @@ def contact():
         </html>
         """
         send_email(subject, sender_email, mail)
-        return redirect(url_for('home'))
+        flash('Message sent')
     return render_template('contact.html')
 
 
@@ -359,4 +360,4 @@ def substance_result():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=8000)

@@ -8,9 +8,19 @@
             <div class="col-md-6">
               <div class="bannerContent">
                 <h1 class="xlTitle pb-md-3">Contact us below</h1>
-                  <p>Thank you for reaching out to Mental Health Portal. If you are booking for appointment,
-                  please specify the best time that you will be available to receive a call.</p> <hr>
+                  <p>Thank you for reaching out to Mental Health Portal. Complete the form and click "Send".</p> <hr>
               </div>
+                <div>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-primary" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
             </div>
           </div>
         </div>
@@ -22,7 +32,7 @@
             <form method="post">
                 <div class="row">
                     <div class="col-md-8">
-                        <label class="col-form-label">Name</label>
+                        <label class="col-form-label">Full Name</label>
                         <input type="text" name="name" placeholder="Your name">
                     </div>
                 </div>
@@ -38,6 +48,17 @@
                         <input type="tel" name="phone" placeholder="Your mobile number">
                     </div>
                 </div>
+                <div class="row">
+                <div class="col-md-8">
+                    <label class="col-form-label">Subject</label>
+                    <select class="form-select" id="subject" name="subject" placeholder="Choose">
+                        <option selected>Choose...</option>
+                        <option value="Inquiry">Inquiry</option>
+                        <option value="Appointment">Appointment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
                 <div class="row">
                     <div class="col-md-8">
                         <label class="col-form-label">Message</label>

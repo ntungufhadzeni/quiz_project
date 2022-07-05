@@ -8,7 +8,6 @@
             <div class="col-md-6">
               <div class="bannerContent">
                   <h1 class="xlTitle pb-md-3">{% block title %} Recommended Assessments{% endblock %}</h1>
-                  <p>We recommend that you take one of these self-assessment tools</p>
               </div>
             </div>
           </div>
@@ -16,10 +15,15 @@
       </div>
 </section>
 <section class="main">
-    <div class="container">
-        {% for quiz, name in quizes %}
-            <a href="{{quiz}}" class="btn btnPrimary quiz" target="_blank">{{name}}</a>
-        {% endfor %}
+    <div class="innerPageBannerCol">
+        <div class="container">
+            {% for quiz, name in quizes %}
+                <a href="{{quiz}}" class="btn btnPrimary quiz" target="_blank">{{name}}</a>
+            {% endfor %}
+            <div class="alert alert-light" role="alert">
+                {{ message }}
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
