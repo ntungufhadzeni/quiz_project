@@ -22,20 +22,22 @@
             <div class="question">
                 <h4>{{ q[i]['q'] }}</h4>
             </div>
-            <input type="radio" class="btn-check rounded-pill" id="Yes {{i}}" name="answer {{i}}" value="Yes" autocomplete="off">
+            <input type="radio" class="btn-check rounded-pill" id="Yes {{i}}" name="answer {{i}}" value="Yes" autocomplete="off" onclick="ShowHideDiv()">
             <label class="btn btn-outline-success rounded-pill" for="Yes {{i}}">Yes</label>
-            <input type="radio" class="btn-check rounded-pill" id="No {{i}}" name="answer {{i}}" value="No" autocomplete="off" checked>
+            <input type="radio" class="btn-check rounded-pill" id="No {{i}}" name="answer {{i}}" value="No" autocomplete="off" checked onclick="ShowHideDiv()">
             <label class="btn btn-outline-success rounded-pill" for="No {{i}}">No</label><br><br>
             <div class="mb-3">
                 <div class="col-auto">
-                    <label>If yes, specify...</label>
-                    <select multiple name="specify {{i}}">
-                        {% for item in q[i]['add'] %}
-                        <option value="{{item}}">{{item}}</option>
-                        {% endfor %}
-                    </select>
+                    <div id="dv {{i}}" style="display: none">
+                        <label>specify...</label>
+                        <select multiple name="specify {{i}}">
+                            {% for item in q[i]['add'] %}
+                                <option value="{{item}}">{{item}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
-            </div>
+            </div><hr>
             {% endfor %}
             <div class="submit">
                 <button type="submit" class="btn btnPrimary">Next</button>
@@ -44,15 +46,4 @@
     </div>
 </div>
 </section>
-<script>
-        const btnCheck = document.getElementsByClassName("btn-check rounded-pill");
-        const specify = document.getElementsByTagName("select");
-
-        btnCheck.onclick = function () {
-            if (btnCheck.value == 'No') specify.disabled = true;
-            else specify.disabled = false;
-
-
-        }
-</script>
 {% endblock %}
