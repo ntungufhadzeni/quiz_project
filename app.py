@@ -177,7 +177,7 @@ def additional():
 
         if answer3 == 'Yes' or answer4 == 'Yes':
             link = "alcohol-drug-quiz"
-            name = "Past Alcohol or Drug Use Assessment"
+            name = "Substance Use Assessment"
             t = (link, name)
             quizzes.append(t)
 
@@ -226,7 +226,6 @@ def anxiety():
 def mental_result():
     diagnosis = session['mental_diagnosis']
     subject = 'Mental Health Portal - Depression Assessment'
-    receiver = request.form['email']
     mail = f"""
                 <!doctype html>
                 <html lang="en">
@@ -245,7 +244,8 @@ def mental_result():
                 </body>
                 </html>
                 """
-    if receiver != '':
+    if 'email' in session.keys() and session['email'] != '':
+        receiver = session['email']
         send_email(subject, receiver, mail)
     return render_template('results_mental.html', diagnosis=diagnosis)
 
@@ -254,7 +254,6 @@ def mental_result():
 def anxiety_result():
     diagnosis = session['anxiety_diagnosis']
     subject = 'Mental Health Portal - Anxiety Assessment'
-    receiver = request.form['email']
     mail = f"""
                     <!doctype html>
                     <html lang="en">
@@ -273,7 +272,8 @@ def anxiety_result():
                     </body>
                     </html>
                     """
-    if receiver != '':
+    if 'email' in session.keys() and session['email'] != '':
+        receiver = session['email']
         send_email(subject, receiver, mail)
     return render_template('results_anxiety.html', diagnosis=diagnosis)
 
@@ -333,8 +333,7 @@ def alcohol_drugs():
 @app.route('/substance-abuse-results', methods=('GET', 'POST'))
 def substance_result():
     diagnosis = session['substance_diagnosis']
-    subject = 'Mental Health Portal - Past Alcohol or Drug Use Assessment'
-    receiver = request.form['email']
+    subject = 'Mental Health Portal - Substance Use Assessment'
     mail = f"""
                     <!doctype html>
                     <html lang="en">
@@ -347,13 +346,14 @@ def substance_result():
                     </head>
                     <body>
                         <p>Hi, {session['name']} </p>
-                        <p>Thank you for completing Past Alcohol or Drug Use Assessment. Your assessment result is: {diagnosis}.</p>
+                        <p>Thank you for completing Substance Use Assessment. Your assessment result is: {diagnosis}.</p>
                         <p>Kind regards,</p>
                         <p>Mental Health Portal</p>
                     </body>
                     </html>
                     """
-    if receiver != '':
+    if 'email' in session.keys() and session['email'] != '':
+        receiver = session['email']
         send_email(subject, receiver, mail)
     return render_template('results_substance.html', diagnosis=diagnosis)
 
