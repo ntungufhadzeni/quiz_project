@@ -110,13 +110,13 @@ def substance_calc(lst):
             m += 0
 
     if m < 2:
-        msg = 'No symptoms for '
+        msg = 'No symptoms for substance use'
     elif 2 <= m <= 3:
-        msg = 'Mild symptoms for '
+        msg = 'Mild symptoms for substance use'
     elif 4 <= m <= 5:
-        msg = 'Moderate symptoms for '
+        msg = 'Moderate symptoms for substance use'
     elif m >= 6:
-        msg = 'Severe symptoms for '
+        msg = 'Severe symptoms for substance use'
 
     return msg
 
@@ -326,7 +326,7 @@ def alcohol_drugs():
             substance = request.form['drug']
             alcohol.append(request.form[f'answer {i}'])
         diagnosis = substance_calc(alcohol)
-        session['substance_diagnosis'] = diagnosis + substance
+        session['substance_diagnosis'] = diagnosis
         return redirect(url_for('substance_result'))
     return render_template('quiz_2.html', questions=questions[2], len=lens)
 
