@@ -131,7 +131,7 @@ def client():
     if request.method == 'POST':
         session['name'] = request.form['firstname'] + " " + request.form['lastname']
         session['email'] = request.form['email']
-        subject = 'Mental Health Check'
+        subject = 'Mental Health Portal'
         receiver = request.form['email']
         mail = f"""
             <!doctype html>
@@ -145,9 +145,9 @@ def client():
             </head>
             <body>
                 <p>Hi, {session['name']} </p>
-                <p>Thank you for visiting our website. We have captured your contact details and we will give you feedback soon.</p>
+                <p>Thank you for visiting our website, your assessment results will be sent to this email.</p>
                 <p>Kind regards,</p>
-                <p>Mental Health Check</p>
+                <p>Mental Health Portal</p>
             </body>
             </html>
             """
@@ -225,19 +225,63 @@ def anxiety():
 @app.route('/mental-results', methods=('GET', 'POST'))
 def mental_result():
     diagnosis = session['mental_diagnosis']
+    subject = 'Mental Health Portal - Depression Assessment'
+    receiver = request.form['email']
+    mail = f"""
+                <!doctype html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport"
+                          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <title>Document</title>
+                </head>
+                <body>
+                    <p>Hi, {session['name']} </p>
+                    <p>Thank you for completing depression assessment. Your assessment result is: {diagnosis}.</p>
+                    <p>Kind regards,</p>
+                    <p>Mental Health Portal</p>
+                </body>
+                </html>
+                """
+    if receiver != '':
+        send_email(subject, receiver, mail)
     return render_template('results_mental.html', diagnosis=diagnosis)
 
 
 @app.route('/anxiety-results', methods=('GET', 'POST'))
 def anxiety_result():
     diagnosis = session['anxiety_diagnosis']
+    subject = 'Mental Health Portal - Anxiety Assessment'
+    receiver = request.form['email']
+    mail = f"""
+                    <!doctype html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport"
+                              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                        <title>Document</title>
+                    </head>
+                    <body>
+                        <p>Hi, {session['name']} </p>
+                        <p>Thank you for completing anxiety assessment. Your assessment result is: {diagnosis}.</p>
+                        <p>Kind regards,</p>
+                        <p>Mental Health Portal</p>
+                    </body>
+                    </html>
+                    """
+    if receiver != '':
+        send_email(subject, receiver, mail)
     return render_template('results_anxiety.html', diagnosis=diagnosis)
 
 
 @app.route('/contact-us', methods=('GET', 'POST'))
 def contact():
     if request.method == 'POST':
-        subject = 'Mental Health Check'
+        subject = 'Mental Health Portal'
         name = request.form['name']
         phone = request.form['phone']
         _email = request.form['email']
@@ -289,6 +333,28 @@ def alcohol_drugs():
 @app.route('/substance-abuse-results', methods=('GET', 'POST'))
 def substance_result():
     diagnosis = session['substance_diagnosis']
+    subject = 'Mental Health Portal - Past Alcohol or Drug Use Assessment'
+    receiver = request.form['email']
+    mail = f"""
+                    <!doctype html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport"
+                              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                        <title>Document</title>
+                    </head>
+                    <body>
+                        <p>Hi, {session['name']} </p>
+                        <p>Thank you for completing Past Alcohol or Drug Use Assessment. Your assessment result is: {diagnosis}.</p>
+                        <p>Kind regards,</p>
+                        <p>Mental Health Portal</p>
+                    </body>
+                    </html>
+                    """
+    if receiver != '':
+        send_email(subject, receiver, mail)
     return render_template('results_substance.html', diagnosis=diagnosis)
 
 
